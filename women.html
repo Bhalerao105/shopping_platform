@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Women Wear</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f7f7f7;
+}
+
+
+/* ================= HEADER ================= */
+
+header{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+header h1{
+    font-size:32px;
+}
+
+.cartButton{
+    margin-top:15px;
+    background:#e91e63;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.cartButton:hover{
+    background:#c2185b;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:90%;
+    margin:30px auto;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.category{
+    width:280px;
+    height:180px;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+    box-shadow:0 5px 15px #bbb;
+    transition:0.3s;
+}
+
+.category:hover{
+    transform:scale(1.05);
+}
+
+.category img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.category h3{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:rgba(0,0,0,0.65);
+    color:white;
+    text-align:center;
+    padding:15px;
+    font-size:22px;
+}
+
+
+/* ================= SUBTYPE ================= */
+
+#subtypeSection{
+    display:none;
+    margin-top:45px;
+}
+
+.subtypes{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.subtypes button{
+    background:#222;
+    color:white;
+    border:none;
+    padding:13px 25px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.subtypes button:hover{
+    background:#555;
+}
+
+
+/* ================= PRODUCTS ================= */
+
+#productSection{
+    display:none;
+    margin-top:45px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    text-align:center;
+    box-shadow:0 4px 15px #ccc;
+    padding-bottom:20px;
+}
+
+.product img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.product h3{
+    margin:15px 0 8px;
+}
+
+.price{
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+select{
+    padding:10px;
+    width:70%;
+    border:1px solid #ccc;
+    border-radius:7px;
+    margin-bottom:12px;
+}
+
+.Buy{
+    background:#222;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:5px;
+}
+
+.Buy:hover{
+    background:green;
+}
+
+
+/* ================= BACK ================= */
+
+.back{
+    display:block;
+    margin:25px auto;
+    padding:10px 25px;
+    border:none;
+    background:#777;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+
+/* ================= CART ================= */
+
+#cartSection{
+    display:none;
+    margin-top:40px;
+}
+
+.cartItem{
+    background:white;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:12px;
+    box-shadow:0 3px 10px #ccc;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.cartItem img{
+    width:80px;
+    height:90px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.cartInfo{
+    flex:1;
+}
+
+.cartInfo h3{
+    margin-bottom:8px;
+}
+
+.removeBtn{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.total{
+    text-align:right;
+    font-size:24px;
+    font-weight:bold;
+    color:green;
+    margin:20px 0;
+}
+
+.checkoutBtn{
+    display:block;
+    margin:20px auto;
+    background:green;
+    color:white;
+    border:none;
+    padding:13px 30px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <h1>👗 WOMEN WEAR</h1>
+
+    <button class="cartButton" onclick="showCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+
+</header>
+
+
+<div class="container">
+
+
+<h2>Choose Category</h2>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<div class="categories">
+
+    <div class="category" onclick="showSubtypes('traditional')">
+
+        <img src="traditional.jpg">
+
+        <h3>Traditional Wear</h3>
+
+    </div>
+
+
+    <div class="category" onclick="showSubtypes('Western')">
+
+        <img src="Western.jpg">
+
+        <h3>Western Wear</h3>
+
+    </div>
+
+
+    <div class="category" onclick="showSubtypes('Casual')">
+
+        <img src="Casual.jpg">
+
+        <h3>Casual Wear</h3>
+
+    </div>
+
+</div>
+
+
+<!-- ================= SUBTYPES ================= -->
+
+<div id="subtypeSection">
+
+    <h2 id="subTitle">
+        Select Type
+    </h2>
+
+    <div class="subtypes" id="subtypes"></div>
+
+</div>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<div id="productSection">
+
+    <h2 id="productTitle">
+        Products
+    </h2>
+
+    <div class="products" id="products"></div>
+
+    <button class="back" onclick="backToSubtype()">
+        ← Back
+    </button>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div id="cartSection">
+
+    <h2>🛒 My Cart</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="total">
+
+        Total: ₹<span id="cartTotal">
+            0
+        </span>
+
+    </div>
+
+    <button class="checkoutBtn"
+            onclick="checkout()">
+
+        Proceed to Buy
+
+    </button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   PRODUCT DATA
+===================================================== */
+
+const clothes = {
+
+
+/* =====================================================
+   TRADITIONAL
+===================================================== */
+
+traditional: {
+
+    title:"Traditional Wear",
+
+
+    /* ================= SAREE ================= */
+
+    Saree:[
+
+        {
+            name:"Designer Saree",
+            price:"₹1,500",
+            image:"designer saree.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Designer Silk Saree",
+                    price:"₹1,999",
+                    image:"designer silk saree.jpg"
+                },
+
+                {
+                    name:"Designer Banarasi Saree",
+                    price:"₹2,499",
+                    image:"designer banarasi saree.jpg"
+                },
+
+                {
+                    name:"Designer Georgette Saree",
+                    price:"₹1,799",
+                    image:"designer georgette saree.jpg"
+                },
+
+                {
+                    name:"Designer Chiffon Saree",
+                    price:"₹1,599",
+                    image:"designer chiffon saree.jpg"
+                },
+
+                {
+                    name:"Designer Party Wear Saree",
+                    price:"₹2,999",
+                    image:"designer party saree.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Paithani Saree",
+            price:"₹3,000",
+            image:"paithani saree.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Traditional Paithani Saree",
+                    price:"₹3,499",
+                    image:"traditional paithani saree.jpg"
+                },
+
+                {
+                    name:"Silk Paithani Saree",
+                    price:"₹4,999",
+                    image:"silk paithani saree.jpg"
+                },
+
+                {
+                    name:"Peacock Paithani Saree",
+                    price:"₹5,499",
+                    image:"peacock paithani saree.jpg"
+                },
+
+                {
+                    name:"Banarasi Paithani Saree",
+                    price:"₹4,499",
+                    image:"banarasi paithani saree.jpg"
+                },
+
+                {
+                    name:"Party Wear Paithani Saree",
+                    price:"₹6,999",
+                    image:"party wear paithani saree.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    /* ================= KURTI ================= */
+
+    Kurti:[
+
+        {
+            name:"Anarkali Kurti",
+            price:"₹799",
+            image:"anarkali kurti.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Cotton Anarkali Kurti",
+                    price:"₹899",
+                    image:"cotton anarakali kurti.jpg"
+                },
+
+                {
+                    name:"Printed Anarkali Kurti",
+                    price:"₹999",
+                    image:"printed anarkali kurti.jpg"
+                },
+
+                {
+                    name:"Embroidered Anarkali Kurti",
+                    price:"₹1,299",
+                    image:"embroidered anarkali kurti.jpg"
+                },
+
+                {
+                    name:"Party Wear Anarkali Kurti",
+                    price:"₹1,499",
+                    image:"party wear anarkali kurti.jpg"
+                },
+
+                {
+                    name:"Designer Anarkali Kurti",
+                    price:"₹1,799",
+                    image:"designer anarkali kurti.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Chikankari Kurti",
+            price:"₹999",
+            image:"chikankari kurti.jpg",
+
+            subProducts:[
+
+                {
+                    name:"White Chikankari Kurti",
+                    price:"₹1,099",
+                    image:"white chikankari kurti.jpg"
+                },
+
+                {
+                    name:"Cotton Chikankari Kurti",
+                    price:"₹1,199",
+                    image:"cotton chikankari kurti.jpg"
+                },
+
+                {
+                    name:"Printed Chikankari Kurti",
+                    price:"₹1,299",
+                    image:"printed chikankari kurti.jpg"
+                },
+
+                {
+                    name:"Party Wear Chikankari Kurti",
+                    price:"₹1,599",
+                    image:"party wear chikankari kurti.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    /* ================= LEHENGA ================= */
+
+    lehenga:[
+
+        {
+            name:"Designer Lehenga",
+            price:"₹7,000",
+            image:"designer lehenga.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Silk Designer Lehenga",
+                    price:"₹7,999",
+                    image:"silk designer lehenga.jpg"
+                },
+
+                {
+                    name:"Heavy Work Lehenga",
+                    price:"₹9,499",
+                    image:"heavy work lehenga.jpg"
+                },
+
+                {
+                    name:"Party Wear Lehenga",
+                    price:"₹6,999",
+                    image:"party wear lehenga.jpg"
+                },
+
+                {
+                    name:"Embroidered Lehenga",
+                    price:"₹8,999",
+                    image:"embroidered lehenga.jpg"
+                },
+
+                {
+                    name:"Designer Bridal Lehenga",
+                    price:"₹12,999",
+                    image:"designer bridal lehenga.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Bridal Lehenga",
+            price:"₹10,000",
+            image:"bridal lehenga.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Red Bridal Lehenga",
+                    price:"₹11,999",
+                    image:"red bridal lehenga.jpg"
+                },
+
+                {
+                    name:"Pink Bridal Lehenga",
+                    price:"₹10,999",
+                    image:"pink bridal lehenga.jpg"
+                },
+
+                {
+                    name:"Maroon Bridal Lehenga",
+                    price:"₹13,999",
+                    image:"maroom bridal lehenga.jpg"
+                },
+
+                {
+                    name:"Golden Bridal Lehenga",
+                    price:"₹14,999",
+                    image:"golden bridal lehenga.jpg"
+                },
+
+                {
+                    name:"Heavy Bridal Lehenga",
+                    price:"₹16,999",
+                    image:"heavy bridal lehenga.jpg"
+                }
+
+            ]
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   WESTERN
+===================================================== */
+
+Western: {
+
+    title:"Western Wear",
+
+
+    Onepiece:[
+
+        {
+            name:"Long One Piece",
+            price:"₹1,299",
+            image:"one piece.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Floral Long One Piece",
+                    price:"₹1,499",
+                    image:"floral long one piece.jpg"
+                },
+
+                {
+                    name:"Party Wear One Piece",
+                    price:"₹2,499",
+                    image:"party one piece.jpg"
+                },
+
+                {
+                    name:"Bodycon One Piece",
+                    price:"₹2,199",
+                    image:"bodycon one piece.jpg"
+                },
+
+                {
+                    name:"Printed Long One Piece",
+                    price:"₹1,799",
+                    image:"printed long one piece.jpg"
+                },
+
+                {
+                    name:"Designer One Piece",
+                    price:"₹2,999",
+                    image:"designer one piece.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Short One Piece",
+            price:"₹3,999",
+            image:"short one piece.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Floral Short One Piece",
+                    price:"₹1,499",
+                    image:"floral short one piece.jpg"
+                },
+
+                {
+                    name:"Party Wear Short One Piece",
+                    price:"₹2,499",
+                    image:"party short one piece.jpg"
+                },
+
+                {
+                    name:"Denim Short One Piece",
+                    price:"₹1,999",
+                    image:"denim short one piece.jpg"
+                },
+
+                {
+                    name:"Printed Short One Piece",
+                    price:"₹1,699",
+                    image:"printed short one piece.jpg"
+                },
+
+                {
+                    name:"Designer Short One Piece",
+                    price:"₹2,799",
+                    image:"designer short one piece.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    CropTop:[
+
+        {
+            name:"T-Shirt Crop Top",
+            price:"₹999",
+            image:"T-shirt Crop Top.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Printed T-Shirt Crop Top",
+                    price:"₹699",
+                    image:"printed t shirt crop top.jpg"
+                },
+
+                {
+                    name:"Cotton T-Shirt Crop Top",
+                    price:"₹799",
+                    image:"cotton t shirt crop top.jpg"
+                },
+
+                {
+                    name:"Oversized Crop Top",
+                    price:"₹899",
+                    image:"oversized crop top.jpg"
+                },
+
+                {
+                    name:"Graphic Crop Top",
+                    price:"₹999",
+                    image:"graphic crop top.jpg"
+                },
+
+                {
+                    name:"Party Wear Crop Top",
+                    price:"₹1,299",
+                    image:"party crop top.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Shirt Crop Top",
+            price:"₹799",
+            image:"Shirt Crop Top.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Denim Shirt Crop Top",
+                    price:"₹999",
+                    image:"denim shirt crop top.jpg"
+                },
+
+                {
+                    name:"Printed Shirt Crop Top",
+                    price:"₹899",
+                    image:"printed shirt crop top.jpg"
+                },
+
+                {
+                    name:"Cotton Shirt Crop Top",
+                    price:"₹799",
+                    image:"cotton shirt crop top.jpg"
+                },
+
+                {
+                    name:"Party Wear Shirt Crop Top",
+                    price:"₹1,199",
+                    image:"party wear shirt crop top.jpg"
+                },
+
+                {
+                    name:"Designer Shirt Crop Top",
+                    price:"₹1,399",
+                    image:"designer shirt crop top.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    Dress:[
+
+        {
+            name:"Short Frock",
+            price:"₹1,199",
+            image:"short Frock.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Floral Short Frock",
+                    price:"₹1,299",
+                    image:"floral short frock.jpg"
+                },
+
+                {
+                    name:"Party Wear Short Frock",
+                    price:"₹1,799",
+                    image:"party short frock.jpg"
+                },
+
+                {
+                    name:"Cotton Short Frock",
+                    price:"₹999",
+                    image:"cotton short frock.jpg"
+                },
+
+                {
+                    name:"Printed Short Frock",
+                    price:"₹1,199",
+                    image:"printed short frock.jpg"
+                },
+
+                {
+                    name:"Designer Short Frock",
+                    price:"₹2,199",
+                    image:"designer short frock.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Jumpsuit",
+            price:"₹3,199",
+            image:"jumpsuit.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Denim Jumpsuit",
+                    price:"₹2,499",
+                    image:"denim jumpsuit.jpg"
+                },
+
+                {
+                    name:"Party Wear Jumpsuit",
+                    price:"₹3,499",
+                    image:"party jumpsuit.jpg"
+                },
+
+                {
+                    name:"Floral Jumpsuit",
+                    price:"₹2,799",
+                    image:"floral jumpsuit.jpg"
+                },
+
+                {
+                    name:"Casual Jumpsuit",
+                    price:"₹2,299",
+                    image:"casual jumpsuit.jpg"
+                },
+
+                {
+                    name:"Designer Jumpsuit",
+                    price:"₹3,999",
+                    image:"designer jumpsuit.jpg"
+                }
+
+            ]
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   CASUAL
+===================================================== */
+
+Casual: {
+
+    title:"Casual Wear",
+
+
+    Nightdress:[
+
+        {
+            name:"Long Night Dress",
+            price:"₹799",
+            image:"Long Night Dress.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Cotton Long Night Dress",
+                    price:"₹699",
+                    image:"cotton long night dress.jpg"
+                },
+
+                {
+                    name:"Printed Long Night Dress",
+                    price:"₹749",
+                    image:"printed long night dress.jpg"
+                },
+
+                {
+                    name:"Floral Long Night Dress",
+                    price:"₹799",
+                    image:"floral long night dress.jpg"
+                },
+
+                {
+                    name:"Comfort Long Night Dress",
+                    price:"₹899",
+                    image:"comfort long night dress.jpg"
+                },
+
+                {
+                    name:"Designer Long Night Dress",
+                    price:"₹999",
+                    image:"designer long night dress.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Short Night Dress",
+            price:"₹599",
+            image:"Short Night Dress.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Cotton Short Night Dress",
+                    price:"₹549",
+                    image:"cotton short night dress.jpg"
+                },
+
+                {
+                    name:"Printed Short Night Dress",
+                    price:"₹599",
+                    image:"printed short night dress.jpg"
+                },
+
+                {
+                    name:"Floral Short Night Dress",
+                    price:"₹649",
+                    image:"floral short night dress.jpg"
+                },
+
+                {
+                    name:"Comfort Short Night Dress",
+                    price:"₹699",
+                    image:"comfort short night dress.jpg"
+                },
+
+               
+
+            ]
+        }
+
+    ],
+
+
+    Top:[
+
+        {
+            name:"Casual T-Shirt",
+            price:"₹499",
+            image:"Casual T-shirt.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Printed Casual T-Shirt",
+                    price:"₹549",
+                    image:"printed casual t shirt.jpg"
+                },
+
+                {
+                    name:"Cotton Casual T-Shirt",
+                    price:"₹599",
+                    image:"cotton casual t shirt.jpg"
+                },
+
+                {
+                    name:"Oversized Casual T-Shirt",
+                    price:"₹699",
+                    image:"oversized casual t shirt.jpg"
+                },
+
+                {
+                    name:"Graphic Casual T-Shirt",
+                    price:"₹749",
+                    image:"graphic casual t shirt.jpg"
+                },
+
+                {
+                    name:"Designer Casual T-Shirt",
+                    price:"₹899",
+                    image:"designer casual t shirt.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Casual Top",
+            price:"₹599",
+            image:"Casual Top.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Printed Casual Top",
+                    price:"₹649",
+                    image:"printed casual top.jpg"
+                },
+
+                {
+                    name:"Cotton Casual Top",
+                    price:"₹699",
+                    image:"cotton casual top.jpg"
+                },
+
+                {
+                    name:"Floral Casual Top",
+                    price:"₹749",
+                    image:"floral casual top.jpg"
+                },
+
+                {
+                    name:"Oversized Casual Top",
+                    price:"₹799",
+                    image:"oversized casual top.jpg"
+                },
+
+                {
+                    name:"Designer Casual Top",
+                    price:"₹999",
+                    image:"designer casual top.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    Jeans:[
+
+        {
+            name:"Ankle Length Jeans",
+            price:"₹999",
+            image:"Ankle Length Jeans.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Blue Ankle Length Jeans",
+                    price:"₹999",
+                    image:"blue ankle jeans.jpg"
+                },
+
+                {
+                    name:"Black Ankle Length Jeans",
+                    price:"₹1,099",
+                    image:"black ankle jeans.jpg"
+                },
+
+                {
+                    name:"High Waist Ankle Jeans",
+                    price:"₹1,199",
+                    image:"high waist ankle jeans.jpg"
+                },
+
+                {
+                    name:"Ripped Ankle Jeans",
+                    price:"₹1,299",
+                    image:"ripped ankle jeans.jpg"
+                },
+
+                {
+                    name:"Stretchable Ankle Jeans",
+                    price:"₹1,399",
+                    image:"stretchable ankle jeans.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Wide Leg Jeans",
+            price:"₹1,500",
+            image:"Wide Leg Jeans.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Blue Wide Leg Jeans",
+                    price:"₹1,499",
+                    image:"blue wide leg jeans.jpg"
+                },
+
+                {
+                    name:"Black Wide Leg Jeans",
+                    price:"₹1,599",
+                    image:"black wide leg jeans.jpg"
+                },
+
+                {
+                    name:"High Waist Wide Leg Jeans",
+                    price:"₹1,699",
+                    image:"high waist wide leg jeans.jpg"
+                },
+
+                {
+                    name:"Ripped Wide Leg Jeans",
+                    price:"₹1,799",
+                    image:"ripped wide leg jeans.jpg"
+                },
+
+                {
+                    name:"Cargo Wide Leg Jeans",
+                    price:"₹1,899",
+                    image:"cargo wide leg jeans.jpg"
+                }
+
+            ]
+        }
+
+    ]
+
+}
+
+};
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let selectedCategory = "";
+
+let cart = [];
+
+
+/* =====================================================
+   SHOW SUBTYPES
+===================================================== */
+
+function showSubtypes(category){
+
+    selectedCategory = category;
+
+    document.getElementById("subtypeSection").style.display="block";
+
+    document.getElementById("productSection").style.display="none";
+
+    document.getElementById("cartSection").style.display="none";
+
+
+    let subtypeBox =
+        document.getElementById("subtypes");
+
+    subtypeBox.innerHTML="";
+
+
+    document.getElementById("subTitle").innerText =
+        clothes[category].title;
+
+
+    Object.keys(clothes[category]).forEach(function(type){
+
+        if(type === "title") return;
+
+
+        let button =
+            document.createElement("button");
+
+
+        let displayName = type;
+
+
+        if(type === "Onepiece"){
+            displayName = "One Piece";
+        }
+
+
+        if(type === "Nightdress"){
+            displayName = "Night Dress";
+        }
+
+
+        if(type === "CropTop"){
+            displayName = "Crop Top";
+        }
+
+
+        displayName =
+            displayName.charAt(0).toUpperCase() +
+            displayName.slice(1);
+
+
+        button.innerText =
+            displayName;
+
+
+        button.onclick=function(){
+
+            showProducts(type);
+
+        };
+
+
+        subtypeBox.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   SHOW PRODUCTS
+===================================================== */
+
+function showProducts(type){
+
+    document.getElementById("productSection")
+        .style.display="block";
+
+    document.getElementById("cartSection")
+        .style.display="none";
+
+
+    document.getElementById("productTitle")
+        .innerText =
+        type.charAt(0).toUpperCase() +
+        type.slice(1);
+
+
+    let productBox =
+        document.getElementById("products");
+
+
+    productBox.innerHTML="";
+
+
+    clothes[selectedCategory][type]
+        .forEach(function(item){
+
+        productBox.innerHTML += `
+
+        <div class="product">
+
+            <img src="${item.image}">
+
+            <h3>${item.name}</h3>
+
+            <div class="price">
+                ${item.price}
+            </div>
+
+
+            <select>
+
+                <option>
+                    Select Size
+                </option>
+
+                <option>S</option>
+
+                <option>M</option>
+
+                <option>L</option>
+
+                <option>XL</option>
+
+                <option>XXL</option>
+
+            </select>
+
+            <br>
+
+
+            <button class="Buy"
+                onclick='handleProductClick(${JSON.stringify(item)})'>
+
+                ${item.subProducts ?
+                "View Options" :
+                "Add to Cart"}
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================================
+   HANDLE PRODUCT
+===================================================== */
+
+function handleProductClick(item){
+
+    if(item.subProducts){
+
+        showSubProducts(item.subProducts);
+
+    }
+
+    else{
+
+        addToCart(item);
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW SUB PRODUCTS
+===================================================== */
+
+function showSubProducts(products){
+
+    document.getElementById("productSection")
+        .style.display="block";
+
+
+    document.getElementById("productTitle")
+        .innerText =
+        "Product Options";
+
+
+    let productBox =
+        document.getElementById("products");
+
+
+    productBox.innerHTML="";
+
+
+    products.forEach(function(item){
+
+        productBox.innerHTML += `
+
+        <div class="product">
+
+            <img src="${item.image}">
+
+            <h3>${item.name}</h3>
+
+            <div class="price">
+                ${item.price}
+            </div>
+
+
+            <select>
+
+                <option>
+                    Select Size
+                </option>
+
+                <option>S</option>
+
+                <option>M</option>
+
+                <option>L</option>
+
+                <option>XL</option>
+
+                <option>XXL</option>
+
+            </select>
+
+            <br>
+
+
+            <button class="Buy"
+                onclick='addToCart(${JSON.stringify(item)})'>
+
+                Add to Cart
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(item){
+
+    cart.push(item);
+
+    updateCartCount();
+
+    alert(item.name + " added to cart! 🛒");
+
+}
+
+
+/* =====================================================
+   UPDATE CART COUNT
+===================================================== */
+
+function updateCartCount(){
+
+    document.getElementById("cartCount")
+        .innerText = cart.length;
+
+}
+
+
+/* =====================================================
+   SHOW CART
+===================================================== */
+
+function showCart(){
+
+    document.getElementById("productSection")
+        .style.display="none";
+
+    document.getElementById("subtypeSection")
+        .style.display="none";
+
+    document.getElementById("cartSection")
+        .style.display="block";
+
+
+    displayCart();
+
+}
+
+
+/* =====================================================
+   DISPLAY CART
+===================================================== */
+
+function displayCart(){
+
+    let cartBox =
+        document.getElementById("cartItems");
+
+
+    cartBox.innerHTML="";
+
+
+    let total = 0;
+
+
+    if(cart.length === 0){
+
+        cartBox.innerHTML = `
+
+            <h3 style="text-align:center;">
+                Your cart is empty 🛒
+            </h3>
+
+        `;
+
+
+        document.getElementById("cartTotal")
+            .innerText="0";
+
+        return;
+
+    }
+
+
+    cart.forEach(function(item,index){
+
+        let price =
+            parseInt(
+                item.price.replace(/[₹,]/g,"")
+            );
+
+
+        total += price;
+
+
+        cartBox.innerHTML += `
+
+        <div class="cartItem">
+
+            <img src="${item.image}">
+
+
+            <div class="cartInfo">
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <p>
+                    Price: ${item.price}
+                </p>
+
+            </div>
+
+
+            <button
+                class="removeBtn"
+                onclick="removeFromCart(${index})">
+
+                Remove
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("cartTotal")
+        .innerText =
+        total.toLocaleString("en-IN");
+
+}
+
+
+/* =====================================================
+   REMOVE FROM CART
+===================================================== */
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCartCount();
+
+    displayCart();
+
+}
+
+
+/* =====================================================
+   BACK
+===================================================== */
+
+function backToSubtype(){
+
+    document.getElementById("productSection")
+        .style.display="none";
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert("Your cart is empty!");
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item){
+
+        total +=
+            parseInt(
+                item.price.replace(/[₹,]/g,"")
+            );
+
+    });
+
+
+    alert(
+
+        "Order placed successfully! 🎉\n\n" +
+
+        "Total Amount: ₹" +
+
+        total.toLocaleString("en-IN")
+
+    );
+
+
+    cart = [];
+
+
+    updateCartCount();
+
+    displayCart();
+
+}
+
+</script>
+
+</body>
+</html>

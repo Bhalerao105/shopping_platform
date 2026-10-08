@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Cart</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+    background:#f7f7f7;
+}
+
+
+/* HEADER */
+
+header{
+
+    background:#222;
+
+    color:white;
+
+    padding:22px;
+
+    text-align:center;
+
+}
+
+
+header h1{
+    font-size:30px;
+}
+
+
+/* CONTAINER */
+
+.container{
+
+    width:90%;
+
+    max-width:1000px;
+
+    margin:30px auto;
+
+}
+
+
+/* CART CARD */
+
+.cart-item{
+
+    background:white;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    padding:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    box-shadow:0 4px 15px #ccc;
+
+}
+
+
+/* PRODUCT IMAGE */
+
+.cart-item img{
+
+    width:120px;
+
+    height:140px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+}
+
+
+/* PRODUCT INFO */
+
+.info{
+
+    flex:1;
+
+}
+
+
+.info h3{
+
+    margin-bottom:10px;
+
+    font-size:20px;
+
+}
+
+
+.price{
+
+    color:green;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+
+/* QUANTITY */
+
+.quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:10px;
+
+}
+
+
+.quantity button{
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    background:#222;
+
+    color:white;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+
+.quantity span{
+
+    font-size:17px;
+
+    font-weight:bold;
+
+}
+
+
+/* REMOVE */
+
+.remove{
+
+    background:#e53935;
+
+    color:white;
+
+    border:none;
+
+    padding:9px 15px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    margin-top:10px;
+
+}
+
+
+.remove:hover{
+
+    background:#c62828;
+
+}
+
+
+/* TOTAL */
+
+.total-box{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 15px #ccc;
+
+    text-align:right;
+
+}
+
+
+.total{
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    color:#222;
+
+    margin-bottom:15px;
+
+}
+
+
+.checkout{
+
+    background:#222;
+
+    color:white;
+
+    border:none;
+
+    padding:13px 30px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.checkout:hover{
+
+    background:green;
+
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    text-align:center;
+
+    padding:60px;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 15px #ccc;
+
+}
+
+
+.empty h2{
+
+    margin-bottom:20px;
+
+}
+
+
+.back{
+
+    background:#777;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .cart-item{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .cart-item img{
+
+        width:180px;
+
+        height:200px;
+
+    }
+
+    .quantity{
+
+        justify-content:center;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>🛒 My Cart</h1>
+
+</header>
+
+
+<div class="container">
+
+
+    <div id="cartContainer"></div>
+
+
+</div>
+
+
+<script>
+
+
+/* GET CART */
+
+let cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
+
+
+/* DISPLAY CART */
+
+function displayCart(){
+
+    let container =
+        document.getElementById(
+            "cartContainer"
+        );
+
+
+    container.innerHTML="";
+
+
+    /* EMPTY CART */
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <h2>
+                    Your Cart is Empty
+                </h2>
+
+                <button
+                    class="back"
+                    onclick="goBack()"
+                >
+                    ← Continue Shopping
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    /* PRODUCTS */
+
+    cart.forEach(function(item,index){
+
+        let price =
+            Number(
+                item.price
+                .replace("₹","")
+                .replace(",","")
+            );
+
+
+        let itemTotal =
+            price * item.quantity;
+
+
+        total += itemTotal;
+
+
+        container.innerHTML += `
+
+            <div class="cart-item">
+
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                >
+
+
+                <div class="info">
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+
+                    <div class="price">
+                        ${item.price}
+                    </div>
+
+
+                    <div class="quantity">
+
+                        <button
+                            onclick="decrease(${index})"
+                        >
+                            −
+                        </button>
+
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+
+                        <button
+                            onclick="increase(${index})"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="remove"
+                        onclick="removeItem(${index})"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    /* TOTAL */
+
+    container.innerHTML += `
+
+        <div class="total-box">
+
+            <div class="total">
+
+                Total:
+                ₹${total.toLocaleString("en-IN")}
+
+            </div>
+
+
+            <button
+                class="checkout"
+                onclick="checkout()"
+            >
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* INCREASE */
+
+function increase(index){
+
+    cart[index].quantity++;
+
+    saveCart();
+
+}
+
+
+/* DECREASE */
+
+function decrease(index){
+
+    if(cart[index].quantity > 1){
+
+        cart[index].quantity--;
+
+    }else{
+
+        cart.splice(index,1);
+
+    }
+
+    saveCart();
+
+}
+
+
+/* REMOVE */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    saveCart();
+
+}
+
+
+/* SAVE */
+
+function saveCart(){
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    displayCart();
+
+}
+
+
+/* BACK */
+
+function goBack(){
+
+    window.history.back();
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+    alert(
+        "Checkout page coming soon!"
+    );
+
+}
+
+
+/* START */
+
+displayCart();
+
+</script>
+
+
+</body>
+
+</html>

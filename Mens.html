@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Men Wear</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f7f7f7;
+}
+
+
+/* ================= HEADER ================= */
+
+header{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+header h1{
+    font-size:32px;
+}
+
+.cartButton{
+    margin-top:15px;
+    background:#e91e63;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.cartButton:hover{
+    background:#c2185b;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:90%;
+    margin:30px auto;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.category{
+    width:280px;
+    height:180px;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+    box-shadow:0 5px 15px #bbb;
+    transition:0.3s;
+}
+
+.category:hover{
+    transform:scale(1.05);
+}
+
+.category img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.category h3{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:rgba(0,0,0,0.65);
+    color:white;
+    text-align:center;
+    padding:15px;
+    font-size:22px;
+}
+
+
+/* ================= SUBTYPE ================= */
+
+#subtypeSection{
+    display:none;
+    margin-top:45px;
+}
+
+.subtypes{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.subtypes button{
+    background:#222;
+    color:white;
+    border:none;
+    padding:13px 25px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.subtypes button:hover{
+    background:#555;
+}
+
+
+/* ================= PRODUCTS ================= */
+
+#productSection{
+    display:none;
+    margin-top:45px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.product{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    text-align:center;
+    box-shadow:0 4px 15px #ccc;
+    padding-bottom:20px;
+}
+
+.product img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.product h3{
+    margin:15px 0 8px;
+}
+
+.price{
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+select{
+    padding:10px;
+    width:70%;
+    border:1px solid #ccc;
+    border-radius:7px;
+    margin-bottom:12px;
+}
+
+.Buy{
+    background:#222;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:5px;
+}
+
+.Buy:hover{
+    background:green;
+}
+
+
+/* ================= BACK ================= */
+
+.back{
+    display:block;
+    margin:25px auto;
+    padding:10px 25px;
+    border:none;
+    background:#777;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.back:hover{
+    background:#555;
+}
+
+
+/* ================= CART ================= */
+
+#cartSection{
+    display:none;
+    margin-top:40px;
+}
+
+.cartItem{
+    background:white;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:12px;
+    box-shadow:0 3px 10px #ccc;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.cartItem img{
+    width:80px;
+    height:90px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.cartInfo{
+    flex:1;
+}
+
+.cartInfo h3{
+    margin-bottom:8px;
+}
+
+.cartInfo p{
+    margin:5px 0;
+}
+
+.removeBtn{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.removeBtn:hover{
+    background:#b00000;
+}
+
+.total{
+    text-align:right;
+    font-size:24px;
+    font-weight:bold;
+    color:green;
+    margin:20px 0;
+}
+
+.checkoutBtn{
+    display:block;
+    margin:20px auto;
+    background:green;
+    color:white;
+    border:none;
+    padding:13px 30px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.checkoutBtn:hover{
+    background:#006400;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .category{
+        width:100%;
+        max-width:320px;
+    }
+
+    .cartItem{
+        flex-wrap:wrap;
+    }
+
+    .cartItem img{
+        width:70px;
+        height:80px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <h1>👔 MEN WEAR</h1>
+
+    <button class="cartButton" onclick="showCart()">
+
+        🛒 Cart (<span id="cartCount">0</span>)
+
+    </button>
+
+</header>
+
+
+<div class="container">
+
+
+<h2>Choose Category</h2>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<div class="categories">
+
+
+    <div class="category"
+         onclick="showSubtypes('traditional')">
+
+        <img src="Traditional Wear mens.jpg"
+             alt="Traditional Wear">
+
+        <h3>Traditional Wear</h3>
+
+    </div>
+
+
+    <div class="category"
+         onclick="showSubtypes('Western')">
+
+        <img src="western Wear mens.jpg"
+             alt="Western Wear">
+
+        <h3>Western Wear</h3>
+
+    </div>
+
+
+    <div class="category"
+         onclick="showSubtypes('Casual')">
+
+        <img src="Casual Wear mens.jpg"
+             alt="Casual Wear">
+
+        <h3>Casual Wear</h3>
+
+    </div>
+
+</div>
+
+
+<!-- ================= SUBTYPES ================= -->
+
+<div id="subtypeSection">
+
+    <h2 id="subTitle">
+        Select Type
+    </h2>
+
+    <div class="subtypes"
+         id="subtypes">
+    </div>
+
+</div>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<div id="productSection">
+
+    <h2 id="productTitle">
+        Products
+    </h2>
+
+    <div class="products"
+         id="products">
+    </div>
+
+    <button class="back"
+            onclick="backToSubtype()">
+
+        ← Back
+
+    </button>
+
+</div>
+
+
+<!-- ================= CART ================= -->
+
+<div id="cartSection">
+
+    <h2>🛒 My Cart</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="total">
+
+        Total: ₹<span id="cartTotal">0</span>
+
+    </div>
+
+    <button class="checkoutBtn"
+            onclick="checkout()">
+
+        Proceed to Buy
+
+    </button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   PRODUCT DATA
+===================================================== */
+
+const clothes = {
+
+
+/* =====================================================
+   TRADITIONAL
+===================================================== */
+
+traditional: {
+
+    title:"Traditional Wear",
+
+
+    /* ================= KURTA ================= */
+
+    Kurta:[
+
+        {
+            name:"Designer Kurta",
+            price:"₹1,299",
+            image:"Designer kurta.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Cotton Designer Kurta",
+                    price:"₹1,399",
+                    image:"cotton designer kurta.jpg"
+                },
+
+                {
+                    name:"Printed Designer Kurta",
+                    price:"₹1,499",
+                    image:"printed designer kurta.jpg"
+                },
+
+                {
+                    name:"Embroidered Kurta",
+                    price:"₹1,799",
+                    image:"embroidered kurta.jpg"
+                },
+
+                {
+                    name:"Party Wear Kurta",
+                    price:"₹1,999",
+                    image:"party wear kurta.jpg"
+                },
+
+                {
+                    name:"Silk Designer Kurta",
+                    price:"₹2,499",
+                    image:"silk designer kurta.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Cotton Kurta",
+            price:"₹999",
+            image:"cotton Kurta.jpg",
+
+            subProducts:[
+
+                {
+                    name:"White Cotton Kurta",
+                    price:"₹1,099",
+                    image:"white cotton kurta.jpg"
+                },
+
+                {
+                    name:"Black Cotton Kurta",
+                    price:"₹1,199",
+                    image:"black cotton kurta.jpg"
+                },
+
+                {
+                    name:"Printed Cotton Kurta",
+                    price:"₹1,299",
+                    image:"printed cotton kurta.jpg"
+                },
+
+                {
+                    name:"Short Cotton Kurta",
+                    price:"₹899",
+                    image:"short cotton kurta.jpg"
+                },
+
+                {
+                    name:"Premium Cotton Kurta",
+                    price:"₹1,499",
+                    image:"premium cotton kurta.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    /* ================= SHERWANI ================= */
+
+    Sherwani:[
+
+        {
+            name:"Maharashtrian Sherwani",
+            price:"₹17,000",
+            image:"Maharastrian sherwani.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Traditional Maharashtrian Sherwani",
+                    price:"₹17,999",
+                    image:"traditional maharashtrian sherwani.jpg"
+                },
+
+                {
+                    name:"Silk Maharashtrian Sherwani",
+                    price:"₹19,999",
+                    image:"silk maharashtrian sherwani.jpg"
+                },
+
+                {
+                    name:"Designer Maharashtrian Sherwani",
+                    price:"₹21,999",
+                    image:"designer maharashtrian sherwani.jpg"
+                },
+
+                {
+                    name:"Wedding Sherwani",
+                    price:"₹24,999",
+                    image:"wedding sherwani.jpg"
+                },
+
+                {
+                    name:"Premium Sherwani",
+                    price:"₹29,999",
+                    image:"premium sherwani.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Western Sherwani",
+            price:"₹19,000",
+            image:"Western sherwani.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Black Western Sherwani",
+                    price:"₹19,999",
+                    image:"black western sherwani.jpg"
+                },
+
+                {
+                    name:"Golden Western Sherwani",
+                    price:"₹21,999",
+                    image:"golden western sherwani.jpg"
+                },
+
+                {
+                    name:"Designer Western Sherwani",
+                    price:"₹23,999",
+                    image:"designer western sherwani.jpg"
+                },
+
+                {
+                    name:"Party Wear Sherwani",
+                    price:"₹25,999",
+                    image:"party wear sherwani.jpg"
+                },
+
+                {
+                    name:"Royal Sherwani",
+                    price:"₹29,999",
+                    image:"royal sherwani.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    /* ================= DHOTI ================= */
+
+    Dhoti:[
+
+        {
+            name:"Traditional Dhoti",
+            price:"₹999",
+            image:"Traditional dhoti.jpg",
+
+            subProducts:[
+
+                {
+                    name:"White Traditional Dhoti",
+                    price:"₹1,099",
+                    image:"white traditional dhoti.jpg"
+                },
+
+                {
+                    name:"Cotton Traditional Dhoti",
+                    price:"₹1,199",
+                    image:"cotton traditional dhoti.jpg"
+                },
+
+                {
+                    name:"Silk Traditional Dhoti",
+                    price:"₹1,499",
+                    image:"silk traditional dhoti.jpg"
+                },
+
+                {
+                    name:"Wedding Dhoti",
+                    price:"₹1,799",
+                    image:"wedding dhoti.jpg"
+                },
+
+                
+
+            ]
+        },
+
+
+        {
+            name:"Silk Dhoti",
+            price:"₹700",
+            image:"Silk dhoti.jpg",
+
+            subProducts:[
+
+                {
+                    name:"White Silk Dhoti",
+                    price:"₹799",
+                    image:"white silk dhoti.jpg"
+                },
+
+                {
+                    name:"Golden Silk Dhoti",
+                    price:"₹999",
+                    image:"golden silk dhoti.jpg"
+                },
+
+                {
+                    name:"Traditional Silk Dhoti",
+                    price:"₹1,199",
+                    image:"traditional silk dhoti.jpg"
+                },
+
+                {
+                    name:"Wedding Silk Dhoti",
+                    price:"₹1,499",
+                    image:"wedding silk dhoti.jpg"
+                },
+
+                
+            ]
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   WESTERN
+===================================================== */
+
+Western: {
+
+    title:"Western Wear",
+
+
+    /* ================= SHIRT ================= */
+
+    Shirt:[
+
+        {
+            name:"Formal Shirt",
+            price:"₹999",
+            image:"Formal shirt.jpg",
+
+            subProducts:[
+
+                {
+                    name:"White Formal Shirt",
+                    price:"₹1,099",
+                    image:"white formal shirt.jpg"
+                },
+
+                {
+                    name:"Blue Formal Shirt",
+                    price:"₹1,199",
+                    image:"blue formal shirt.jpg"
+                },
+
+                {
+                    name:"Slim Fit Formal Shirt",
+                    price:"₹1,299",
+                    image:"slim fit formal shirt.jpg"
+                },
+
+                {
+                    name:"Premium Formal Shirt",
+                    price:"₹1,499",
+                    image:"premium formal shirt.jpg"
+                },
+
+                
+            ]
+        },
+
+
+        {
+            name:"Denim Shirt",
+            price:"₹1,199",
+            image:"Denim shirt.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Blue Denim Shirt",
+                    price:"₹1,299",
+                    image:"blue denim shirt.jpg"
+                },
+
+                {
+                    name:"Black Denim Shirt",
+                    price:"₹1,399",
+                    image:"black denim shirt.jpg"
+                },
+
+                {
+                    name:"Light Denim Shirt",
+                    price:"₹1,499",
+                    image:"light denim shirt.jpg"
+                },
+
+                {
+                    name:"Oversized Denim Shirt",
+                    price:"₹1,599",
+                    image:"oversized denim shirt.jpg"
+                },
+
+               
+            ]
+        }
+
+    ],
+
+
+    /* ================= BLAZER ================= */
+
+    Blazer:[
+
+        {
+            name:"Classic Blazer",
+            price:"₹3,999",
+            image:"classic blazer.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Black Classic Blazer",
+                    price:"₹4,499",
+                    image:"black classic blazer.jpg"
+                },
+
+                {
+                    name:"Blue Classic Blazer",
+                    price:"₹4,499",
+                    image:"blue classic blazer.jpg"
+                },
+
+                {
+                    name:"Grey Classic Blazer",
+                    price:"₹4,699",
+                    image:"grey classic blazer.jpg"
+                },
+
+                {
+                    name:"Slim Fit Blazer",
+                    price:"₹4,999",
+                    image:"slim fit blazer.jpg"
+                },
+
+               
+            ]
+        },
+
+
+        {
+            name:"Party Blazer",
+            price:"₹4,999",
+            image:"party blazer.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Black Party Blazer",
+                    price:"₹5,499",
+                    image:"black party blazer.jpg"
+                },
+
+                {
+                    name:"Blue Party Blazer",
+                    price:"₹5,499",
+                    image:"blue party blazer.jpg"
+                },
+
+                {
+                    name:"Velvet Party Blazer",
+                    price:"₹6,499",
+                    image:"velvet party blazer.jpg"
+                },
+
+                {
+                    name:"Designer Party Blazer",
+                    price:"₹6,999",
+                    image:"designer party blazer.jpg"
+                },
+
+               
+            ]
+        }
+
+    ],
+
+
+    /* ================= SUIT ================= */
+
+    Suit:[
+
+        {
+            name:"Formal Suit",
+            price:"₹5,999",
+            image:"formal suit.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Black Formal Suit",
+                    price:"₹6,499",
+                    image:"black formal suit.jpg"
+                },
+
+                {
+                    name:"Blue Formal Suit",
+                    price:"₹6,999",
+                    image:"blue formal suit.jpg"
+                },
+
+                {
+                    name:"Grey Formal Suit",
+                    price:"₹6,999",
+                    image:"grey formal suit.jpg"
+                },
+
+                
+                {
+                    name:"Premium Formal Suit",
+                    price:"₹8,999",
+                    image:"premium formal suit.jpg"
+                }
+
+            ]
+        },
+
+
+        {
+            name:"Designer Suit",
+            price:"₹7,999",
+            image:"designer suit.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Black Designer Suit",
+                    price:"₹8,499",
+                    image:"black designer suit.jpg"
+                },
+
+                {
+                    name:"Blue Designer Suit",
+                    price:"₹8,999",
+                    image:"blue designer suit.jpg"
+                },
+
+                {
+                    name:"Wedding Designer Suit",
+                    price:"₹9,999",
+                    image:"wedding designer suit.jpg"
+                },
+
+                {
+                    name:"Party Designer Suit",
+                    price:"₹10,999",
+                    image:"party designer suit.jpg"
+                },
+
+                
+
+            ]
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   CASUAL
+===================================================== */
+
+Casual: {
+
+    title:"Casual Wear",
+
+
+    /* ================= T-SHIRT ================= */
+
+    TShirt:[
+
+        {
+            name:"Casual T-Shirt",
+            price:"₹499",
+            image:"casual t-shirt mens.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Cotton Casual T-Shirt",
+                    price:"₹549",
+                    image:"cotton casual t shirt mens.jpg"
+                },
+
+                {
+                    name:"Printed Casual T-Shirt",
+                    price:"₹599",
+                    image:"printed casual t shirt mens.jpg"
+                },
+
+                {
+                    name:"Oversized Casual T-Shirt",
+                    price:"₹699",
+                    image:"oversized casual t shirt mens.jpg"
+                },
+
+
+            ]
+        },
+
+
+        {
+            name:"Printed T-Shirt",
+            price:"₹599",
+            image:"printed Tshirt mens.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Floral Printed T-Shirt",
+                    price:"₹649",
+                    image:"floral printed tshirt mens.jpg"
+                },
+
+                {
+                    name:"Graphic Printed T-Shirt",
+                    price:"₹699",
+                    image:"graphic printed tshirt mens.jpg"
+                },
+
+                {
+                    name:"Oversized Printed T-Shirt",
+                    price:"₹749",
+                    image:"oversized printed tshirt mens.jpg"
+                },
+
+                
+
+                {
+                    name:"Designer Printed T-Shirt",
+                    price:"₹899",
+                    image:"designer printed tshirt mens.jpg"
+                }
+
+            ]
+        }
+
+    ],
+
+
+    /* ================= JEANS ================= */
+
+    Jeans:[
+
+        {
+            name:"Slim Fit Jeans",
+            price:"₹999",
+            image:"slim fit mens.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Blue Slim Fit Jeans",
+                    price:"₹1,099",
+                    image:"blue slim fit mens.jpg"
+                },
+
+                {
+                    name:"Black Slim Fit Jeans",
+                    price:"₹1,199",
+                    image:"black slim fit mens.jpg"
+                },
+
+                
+
+                {
+                    name:"Ripped Slim Fit Jeans",
+                    price:"₹1,399",
+                    image:"ripped slim fit mens.jpg"
+                },
+
+                
+            ]
+        },
+
+
+        {
+            name:"Regular Fit Jeans",
+            price:"₹1,299",
+            image:"regular fit mens.jpg",
+
+            subProducts:[
+
+                {
+                    name:"Blue Regular Fit Jeans",
+                    price:"₹1,399",
+                    image:"blue regular fit mens.jpg"
+                },
+
+                {
+                    name:"Black Regular Fit Jeans",
+                    price:"₹1,499",
+                    image:"black regular fit mens.jpg"
+                },
+
+               
+                {
+                    name:"Ripped Regular Fit Jeans",
+                    price:"₹1,699",
+                    image:"ripped regular fit mens.jpg"
+                },
+
+               
+
+            ]
+        }
+
+    ],
+
+
+    
+        
+
+
+        
+                
+
+              
+               
+            
+        
+
+    
+
+}
+
+};
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let selectedCategory = "";
+
+let cart = [];
+
+
+/* =====================================================
+   SHOW SUBTYPES
+===================================================== */
+
+function showSubtypes(category){
+
+    selectedCategory = category;
+
+    document.getElementById("subtypeSection")
+        .style.display="block";
+
+    document.getElementById("productSection")
+        .style.display="none";
+
+    document.getElementById("cartSection")
+        .style.display="none";
+
+
+    let subtypeBox =
+        document.getElementById("subtypes");
+
+    subtypeBox.innerHTML="";
+
+
+    document.getElementById("subTitle")
+        .innerText =
+        clothes[category].title;
+
+
+    Object.keys(clothes[category])
+        .forEach(function(type){
+
+        if(type === "title") return;
+
+
+        let button =
+            document.createElement("button");
+
+
+        let displayName = type;
+
+
+        if(type === "TShirt"){
+            displayName = "T-Shirt";
+        }
+
+
+        displayName =
+            displayName.charAt(0).toUpperCase() +
+            displayName.slice(1);
+
+
+        button.innerText =
+            displayName;
+
+
+        button.onclick=function(){
+
+            showProducts(type);
+
+        };
+
+
+        subtypeBox.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   SHOW PRODUCTS
+===================================================== */
+
+function showProducts(type){
+
+    document.getElementById("productSection")
+        .style.display="block";
+
+    document.getElementById("cartSection")
+        .style.display="none";
+
+
+    let displayTitle = type;
+
+
+    if(type === "TShirt"){
+        displayTitle = "T-Shirt";
+    }
+
+
+    document.getElementById("productTitle")
+        .innerText =
+        displayTitle.charAt(0).toUpperCase() +
+        displayTitle.slice(1);
+
+
+    let productBox =
+        document.getElementById("products");
+
+
+    productBox.innerHTML="";
+
+
+    clothes[selectedCategory][type]
+        .forEach(function(item){
+
+        productBox.innerHTML += `
+
+        <div class="product">
+
+            <img src="${item.image}"
+                 alt="${item.name}">
+
+            <h3>
+                ${item.name}
+            </h3>
+
+            <div class="price">
+                ${item.price}
+            </div>
+
+
+            <select>
+
+                <option>
+                    Select Size
+                </option>
+
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+
+            </select>
+
+            <br>
+
+
+            <button class="Buy"
+                onclick='handleProductClick(${JSON.stringify(item)})'>
+
+                ${item.subProducts ?
+                "View Options" :
+                "Add to Cart"}
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================================
+   HANDLE PRODUCT
+===================================================== */
+
+function handleProductClick(item){
+
+    if(item.subProducts){
+
+        showSubProducts(item.subProducts);
+
+    }
+    else{
+
+        addToCart(item);
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW SUB PRODUCTS
+===================================================== */
+
+function showSubProducts(products){
+
+    document.getElementById("productSection")
+        .style.display="block";
+
+
+    document.getElementById("cartSection")
+        .style.display="none";
+
+
+    document.getElementById("productTitle")
+        .innerText =
+        "Product Options";
+
+
+    let productBox =
+        document.getElementById("products");
+
+
+    productBox.innerHTML="";
+
+
+    products.forEach(function(item){
+
+        productBox.innerHTML += `
+
+        <div class="product">
+
+            <img src="${item.image}"
+                 alt="${item.name}">
+
+            <h3>
+                ${item.name}
+            </h3>
+
+            <div class="price">
+                ${item.price}
+            </div>
+
+
+            <select>
+
+                <option>
+                    Select Size
+                </option>
+
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+
+            </select>
+
+            <br>
+
+
+            <button class="Buy"
+                    onclick='addToCart(${JSON.stringify(item)})'>
+
+                Add to Cart
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(item){
+
+    cart.push(item);
+
+    updateCartCount();
+
+    alert(
+        item.name +
+        " added to cart! 🛒"
+    );
+
+}
+
+
+/* =====================================================
+   UPDATE CART COUNT
+===================================================== */
+
+function updateCartCount(){
+
+    document.getElementById("cartCount")
+        .innerText =
+        cart.length;
+
+}
+
+
+/* =====================================================
+   SHOW CART
+===================================================== */
+
+function showCart(){
+
+    document.getElementById("productSection")
+        .style.display="none";
+
+    document.getElementById("subtypeSection")
+        .style.display="none";
+
+    document.getElementById("cartSection")
+        .style.display="block";
+
+
+    displayCart();
+
+}
+
+
+/* =====================================================
+   DISPLAY CART
+===================================================== */
+
+function displayCart(){
+
+    let cartBox =
+        document.getElementById("cartItems");
+
+
+    cartBox.innerHTML="";
+
+
+    let total = 0;
+
+
+    if(cart.length === 0){
+
+        cartBox.innerHTML = `
+
+            <h3 style="text-align:center;">
+                Your cart is empty 🛒
+            </h3>
+
+        `;
+
+
+        document.getElementById("cartTotal")
+            .innerText="0";
+
+        return;
+
+    }
+
+
+    cart.forEach(function(item,index){
+
+        let price =
+            parseInt(
+                item.price.replace(/[₹,]/g,"")
+            );
+
+
+        total += price;
+
+
+        cartBox.innerHTML += `
+
+        <div class="cartItem">
+
+            <img src="${item.image}"
+                 alt="${item.name}">
+
+
+            <div class="cartInfo">
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <p>
+                    Price: ${item.price}
+                </p>
+
+            </div>
+
+
+            <button
+                class="removeBtn"
+                onclick="removeFromCart(${index})">
+
+                Remove
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+
+    document.getElementById("cartTotal")
+        .innerText =
+        total.toLocaleString("en-IN");
+
+}
+
+
+/* =====================================================
+   REMOVE FROM CART
+===================================================== */
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCartCount();
+
+    displayCart();
+
+}
+
+
+/* =====================================================
+   BACK TO SUBTYPE
+===================================================== */
+
+function backToSubtype(){
+
+    document.getElementById("productSection")
+        .style.display="none";
+
+    document.getElementById("subtypeSection")
+        .style.display="block";
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Your cart is empty!"
+        );
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item){
+
+        total +=
+            parseInt(
+                item.price.replace(/[₹,]/g,"")
+            );
+
+    });
+
+
+    alert(
+
+        "Order placed successfully! 🎉\n\n" +
+
+        "Total Amount: ₹" +
+
+        total.toLocaleString("en-IN")
+
+    );
+
+
+    cart = [];
+
+
+    updateCartCount();
+
+    displayCart();
+
+}
+
+</script>
+
+</body>
+
+</html>
