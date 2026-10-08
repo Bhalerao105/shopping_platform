@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fashion Login</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f5f1ed;
+    }
+
+    .login-container {
+      width: 900px;
+      min-height: 550px;
+      display: flex;
+      background: white;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .fashion-image {
+      width: 50%;
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=900&q=80")
+        center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 40px;
+      color: white;
+    }
+
+    .fashion-image h1 {
+      font-size: 25px;
+      letter-spacing: 1px;
+    }
+
+    .login-box {
+      width: 50%;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .subtitle {
+      color: #1d517449;
+      margin-bottom: 35px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      outline: none;
+      font-size: 15px;
+      transition: .3s;
+    }
+
+    input:focus {
+      border-color: #222;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .options a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: #222;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .signup {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .signup a {
+      color: #222;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .login-container {
+        width: 90%;
+      }
+
+      .fashion-image {
+        display: none;
+      }
+
+      .login-box {
+        width: 100%;
+        padding: 45px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+
+    <div class="fashion-image">
+      <h1>Product You Love,Quality We Trust..!</h1>
+    </div>
+
+    <div class="login-box">
+      <div class="logo">STYLE HUB</div>
+      <p class="subtitle">Welcome Back To Your Fashion World.</p>
+
+    <form action="webpage.html">
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="options">
+          <label>
+            <input type="checkbox" style="width:auto;">
+            Remember me
+          </label>
+
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit">LOGIN</button>
+      </form>
+
+      <div class="signup">
+        Don't have an account?
+        <a href="create acount.html">Create Account</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
